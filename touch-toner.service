@@ -1,0 +1,17 @@
+[Unit]
+Description=Touch Toner soundboard
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/opt/touch-toner
+Environment=NODE_ENV=production
+# Set this to your GitHub repo to enable updates (owner/repo)
+Environment=GITHUB_REPO=owner/repo
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
